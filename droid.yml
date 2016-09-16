@@ -1,0 +1,33 @@
+project:
+    name: "droid/ssh-known-hosts"
+    description: "Add SSH public keys to known_hosts"
+
+variables:
+    third_party_public_ssh_keys: []
+
+tasks:
+    -
+      name: "Create .ssh/known_hosts"
+      command: "fs:touch"
+      arguments:
+          file: "~/.ssh/known_hosts"
+          mode: "0600"
+    -
+      name: "Add keys to known_hosts"
+      command: "fs:setline"
+      arguments:
+          file: "~/.ssh/known_hosts"
+          option-name: "{{{ item.0 }}}"
+          option-value: "{{{ item.1 }}}"
+          compare-values: ~
+      with_items: third_party_public_ssh_keys
+    -
+      name: "Hash entries in known_hosts"
+      command: "shell:exec"
+      arguments:
+          command-line: "ssh-keygen -H"
+    -
+      name: "Remove old known_hosts"
+      command: "shell:exec"
+      arguments:
+          command-line: "rm ~/.ssh/known_hosts.old"

@@ -1,6 +1,4 @@
-project:
-    name: "droid/ssh-known-hosts"
-    description: "Add SSH public keys to known_hosts"
+description: "Add SSH public keys to known_hosts"
 
 variables:
     third_party_public_ssh_keys: []

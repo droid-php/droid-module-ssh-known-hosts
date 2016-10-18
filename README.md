@@ -1,4 +1,4 @@
-# Droid Module: droid/ssh-known-hosts
+# Droid Module: ssh-known-hosts
 
 Add SSH public keys to known_hosts. For more information on Droid, please see
 [droidphp.com](http://droidphp.com).

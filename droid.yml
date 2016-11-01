@@ -1,6 +1,7 @@
 description: "Add SSH public keys to known_hosts"
 
 variables:
+    use_legacy_templating: true
     third_party_public_ssh_keys: []
 
 tasks:
